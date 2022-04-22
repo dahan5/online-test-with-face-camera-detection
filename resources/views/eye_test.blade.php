@@ -3,15 +3,15 @@
 
     <div  style="position: fixed; bottom: 0; left: 0; width: 100%;">
         <div class="alert alert-warning" style="margin-bottom: 0px">
-            <strong>Perhatian</strong> <br>
-            Mohon pastikan Anda menekan tombol Allow/Yes saat permintaan video record / webcam pada Browser Anda. <br>
-            - Pastikan wajah Anda terlihat pada kamera webcam. <br>
-            - Lepaskan Kaca mata sesaat apabila tidak dapat discan, sampai muncul kotak hijau
+            <strong>Attention</strong> <br>
+            Please make sure you press the Allow/Yes button when requesting video record / webcam in your browser. <br>
+            - Make sure your face is visible on the webcam camera. <br>
+            - Remove the glasses for a moment when they cannot be scanned, until a green box appears
         </div>
 
         <div class="alert alert-info" style="margin-bottom: 0px">
             <div id="status" class="text-center">
-                Mohon tunggu pemindaian wajah & mata...
+                Please wait for the face & eye scan...
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
 
             async function faceDetected()
             {
-                $("#status").html("<strong>Wajah dan Mata terdeteksi</strong><br/>Anda akan diarahkan ke formulir test sebentar lagi...");
+                $("#status").html("<strong>Face and Eyes detected</strong><br/>You will be directed to the test form shortly...");
                 setTimeout(async()=>{
                     await $.post("{{ url('api/eye-test-completed') }}");
                     location.href = '{{ url('form-test') }}';

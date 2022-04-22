@@ -12,19 +12,19 @@
     </div>
     <div id="question-wrapper" style="display: none">
         <div class="alert alert-warning">
-            Mohon untuk fokus pada formulir ini. Ikuti peraturan dan tata carai sebagai berikut :
+            Please focus on this form. Follow the rules and procedures as follows:
             <ol>
-                <li>Lepaskan kaca mata sesaat apabila tidak dapat discan, sampai muncul kotak hijau</li>
-                <li>Dilarang merefresh ulang halaman ini</li>
-                <li>Tidak diperkenankan untuk membuka gadget/smartphone/komputer lain untuk mencari jawaban</li>
-                <li>Tidak diperkenankan untuk membuka browser/tab lain untuk mencari jawaban</li>
-                <li>Tidak diperkenankan untuk meninggalkan form test online selama berlangsung</li>
-                <li>Tidak menggunakan cheat/menipu/meminta bantu orang lain untuk menjawab test online</li>
-                <li>Kerjakan test online sesuai dengan waktu yang telah ditentukan</li>
+                <li>Remove the glasses for a moment when they cannot be scanned, until a green box appears</li>
+                <li>Do not refresh this page</li>
+                <li>Not allowed to open other gadgets/smartphones/computers to look for answers</li>
+                <li>Not allowed to open another browser/tab to look for answers</li>
+                <li>It is not allowed to leave the online test form during the process</li>
+                <li>Don't use cheats/cheat/ask for help from others to answer online tests</li>
+                <li>Do the online test according to the specified time</li>
             </ol>
-            Segala bentuk pelanggaran akan langsung diskualifikasi.
+            Any violation will be immediately disqualified.
         </div>
-        <p>Silahkan jawab sesuai dengan apa yang Anda ketahui</p>
+        <p>Please answer according to what you know</p>
 
         <form id="form-test" method="post" action="{{ url('finish-test') }}">
             {!! csrf_field() !!}
@@ -67,8 +67,8 @@
                 $(window).blur(function() {
                     if(isFinish === false) {
                         $.post("{{url('api/abort-test')}}", {nik: nik});
-                        alert("Anda keluar dari fokus browser!");
-                        location.href = '{{ url('?status=diskualifikasi') }}';
+                        alert("You are out of browser focus!");
+                        location.href = '{{ url('?status=disqualification') }}';
                     }
                 });
             })
@@ -101,9 +101,9 @@
                 webgazer.pause();
                 isFinish = true;
                 $("#question-wrapper").remove();
-                await alert("Wajah tidak terdeteksi!");
+                await alert("Face not detected!");
                 await $.post("{{ url('api/abort-test') }}");
-                location.href = '{{ url('/?status=diskualifikasi') }}';
+                location.href = '{{ url('/?status=disqualification') }}';
                 // await sleep(1500);
             }
 
@@ -176,8 +176,8 @@
                     clearInterval(x);
                     isFinish = true;
                     $.post("{{url('api/abort-test')}}");
-                    alert("Anda keluar dari fokus browser!");
-                    location.href = '{{ url('?status=diskualifikasi') }}';
+                    alert("You are out of browser focus!");
+                    location.href = '{{ url('?status=disqualification') }}';
                     document.getElementById("timer").innerHTML = "EXPIRED";
                 }
             }, 1000);

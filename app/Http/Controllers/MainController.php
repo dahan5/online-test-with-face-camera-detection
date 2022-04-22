@@ -24,7 +24,7 @@ class MainController extends Controller
         ]);
 
         $already = ReportTest::query()->where('nik',$request->nik)->first();
-        if($already) return redirect()->back()->with(['message'=>'Anda sudah pernah melakukan test ini','type'=>'warning']);
+        if($already) return redirect()->back()->with(['message'=>'You have done this test before','type'=>'warning']);
 
         $reportTest = new ReportTest();
         $reportTest->name = $request->name;
@@ -90,9 +90,9 @@ class MainController extends Controller
                     $dataAnswer->save();
                 }
             }
-            return redirect('/')->with(['message'=>'<strong>Terima kasih</strong> telah mengikuti test online ini. Kami akan segera menginformasikan kepada Anda hasil test ini.','type'=>'success']);
+            return redirect('/')->with(['message'=>'<strong>Thank you</strong> for taking this online test. We will immediately inform you of the results of this test.','type'=>'success']);
         } else {
-            return redirect('/')->with(['message'=>'Anda didiskualifikasi!','type'=>'warning']);
+            return redirect('/')->with(['message'=>'You are disqualified!','type'=>'warning']);
         }
     }
 
